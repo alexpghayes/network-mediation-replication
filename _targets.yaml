@@ -1,0 +1,35 @@
+simulations:
+  script: _simulations.R
+  store: _simulations
+  reporter_make: timestamp_positives
+  seconds_meta_append: 15.0
+  seconds_reporter: 0.5
+  garbage_collection: yes
+misspecification:
+  script: _misspecification.R
+  store: _misspecification
+  reporter_make: summary
+  workers: 20
+glasgow:
+  script: _glasgow.R
+  store: _glasgow
+  reporter_make: timestamp_positives
+  workers: 10
+addhealth:
+  script: _addhealth.R
+  store: _addhealth
+  reporter_make: timestamp_positives
+  workers: 10
+reddit:
+  script: _reddit.R
+  store: _reddit
+  reporter_make: timestamp_positives
+  workers: 10
+healthyminds:
+  script: _healthyminds.R
+  store: _healthyminds
+  reporter_make: timestamp_positives
+  workers: 10
+  garbage_collection: yes
+  seconds_meta_append: 15.0
+  seconds_reporter: 0.5
