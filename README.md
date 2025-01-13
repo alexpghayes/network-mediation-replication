@@ -42,3 +42,5 @@ To fully replicate the paper, increase the number of replications in the misspec
 - `tar_target(num_chunks, 1, deployment = "main")` -> `tar_target(num_chunks, 30, deployment = "main")` on line 196 of `_simulations.R`
 
 otherwise the misspecification and simulation studies will run using fewer replicates than in the paper (for computational purposes). We recommend you make sure the code runs with the default values before increasing them to the full replication size.
+
+Results will appear as imagine files in the `figures/` folder.
