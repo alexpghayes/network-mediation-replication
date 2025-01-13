@@ -75,7 +75,7 @@ nest_by_event <- function(data, rank = 5, max_rank = 18) {
   data |>
     na.omit() |>
     nest(
-      data = -c(redcap_event_name, event_name, event_name_fct)
+      data = -c(time, event_name, event_name_fct)
     ) |>
     mutate(
       A = map(data, get_sparse_survey_responses),
@@ -93,8 +93,7 @@ nest_by_event <- function(data, rank = 5, max_rank = 18) {
 list(
   tar_target(
     redcap_data_path,
-    # here("data", "healthyminds", "df_camped_alex2.csv"),
-    here("data", "healthyminds", "deidentified.csv"),
+    here("data", "healthyminds", "deidentified_causalmediation.csv"),
     format = "file"
   ),
   tar_target(
@@ -117,7 +116,7 @@ list(
   ),
   tar_target(
     eigcv_plots,
-    make_eigcv_plots(grouped_by_event$ecv[[1]], grouped_by_event$redcap_event_name),
+    make_eigcv_plots(grouped_by_event$ecv[[1]], grouped_by_event$time),
     pattern = map(grouped_by_event)
   ),
   tar_target(

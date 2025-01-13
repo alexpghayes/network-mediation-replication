@@ -68,7 +68,8 @@ plot_spectral_loss <- function(loss, file_type = "png", width = NA, height = NA)
     path1,
     plot = plot1,
     width = width,
-    height = height
+    height = height,
+    create.dir = TRUE
   )
 
   plot2 <- loss |>
@@ -102,7 +103,8 @@ plot_spectral_loss <- function(loss, file_type = "png", width = NA, height = NA)
     path2,
     plot = plot2,
     width = width,
-    height = height
+    height = height,
+    create.dir = TRUE
   )
 
   c(path1, path2)
@@ -174,7 +176,8 @@ plot_mediator_glance <- function(loss, file_type = "png", width = NA, height = N
     path,
     plot = plot,
     width = width,
-    height = height
+    height = height,
+    create.dir = TRUE
   )
 
   path
@@ -227,7 +230,8 @@ plot_mediator_elementwise_loss <- function(loss, file_type = "png", width = NA, 
     path,
     plot = plot,
     width = width,
-    height = 8
+    height = 8,
+    create.dir = TRUE
   )
 
   path
@@ -302,7 +306,8 @@ plot_outcome_glance <- function(loss, file_type = "png", width = NA, height = NA
     path,
     plot = plot,
     width = width,
-    height = 8
+    height = 8,
+    create.dir = TRUE
   )
 
   path
@@ -349,10 +354,6 @@ plot_outcome_elementwise_loss <- function(loss, file_type = "png", width = NA, h
     ) +
     theme_minimal(base_size = 16)
 
-  if (!dir.exists(here("figures/simulations/outcome/"))) {
-    dir.create(here("figures/simulations/outcome/"))
-  }
-
   path <- here(
     glue("figures/simulations/outcome/{model}_beta_loss_average.{file_type}")
   )
@@ -361,7 +362,8 @@ plot_outcome_elementwise_loss <- function(loss, file_type = "png", width = NA, h
     path,
     plot = plot,
     width = width,
-    height = height
+    height = height,
+    create.dir = TRUE
   )
 
   plot2 <- loss |>
@@ -398,7 +400,8 @@ plot_outcome_elementwise_loss <- function(loss, file_type = "png", width = NA, h
     path2,
     plot = plot2,
     width = width,
-    height = height
+    height = height,
+    create.dir = TRUE
   )
 
   plot3 <- loss |>
@@ -444,7 +447,8 @@ plot_outcome_elementwise_loss <- function(loss, file_type = "png", width = NA, h
     path3,
     plot = plot3,
     width = width,
-    height = height
+    height = height,
+    create.dir = TRUE
   )
 
   c(path, path2, path3)
@@ -502,12 +506,6 @@ plot_causal_loss <- function(loss, file_type = "png", width = 9, height = 9 * 9 
       legend.title = element_blank()
     )
 
-  plot
-
-  if (!dir.exists(here("figures/simulations/causal/"))) {
-    dir.create(here("figures/simulations/causal/"))
-  }
-
   path <- here(
     glue("figures/simulations/causal/loss_average.{file_type}")
   )
@@ -516,7 +514,8 @@ plot_causal_loss <- function(loss, file_type = "png", width = 9, height = 9 * 9 
     path,
     plot = plot,
     width = width,
-    height = height
+    height = height,
+    create.dir = TRUE
   )
 
   plot2 <- loss |>
@@ -585,7 +584,8 @@ plot_causal_loss <- function(loss, file_type = "png", width = 9, height = 9 * 9 
     path2,
     plot = plot2,
     width = width,
-    height = height
+    height = height,
+    create.dir = TRUE
   )
 
   c(path, path2)
@@ -636,10 +636,6 @@ plot_null_causal_loss <- function(loss, file_type = "png", width = 9, height = 9
       legend.title = element_blank()
     )
 
-  if (!dir.exists(here("figures/simulations/causal/"))) {
-    dir.create(here("figures/simulations/causal/"))
-  }
-
   path <- here(
     glue("figures/simulations/causal/loss_average_null.{file_type}")
   )
@@ -648,7 +644,8 @@ plot_null_causal_loss <- function(loss, file_type = "png", width = 9, height = 9
     path,
     plot = plot,
     width = width,
-    height = height
+    height = height,
+    create.dir = TRUE
   )
 
   plot2 <- loss |>
@@ -716,7 +713,8 @@ plot_null_causal_loss <- function(loss, file_type = "png", width = 9, height = 9
     path2,
     plot = plot2,
     width = width,
-    height = height
+    height = height,
+    create.dir = TRUE
   )
 
   c(path, path2)

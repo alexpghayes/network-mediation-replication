@@ -193,7 +193,7 @@ list(
     deployment = "main"
   ),
   tar_target(chunk_size, 10, deployment = "main"),
-  tar_target(num_chunks, 30, deployment = "main"),
+  tar_target(num_chunks, 1, deployment = "main"),  # TURN UP TO 30 TO MATCH PAPER
 
   # 100  182  331  603 1099 2000
   tar_target(n, c(100, 182, 331, 603, 1099), deployment = "main"),
@@ -205,7 +205,7 @@ list(
       n = n,
       rank = rank
     ),
-    pattern = cross(n, rank), 
+    pattern = cross(n, rank),
     deployment = "main"
   ),
   static_branch_targets,

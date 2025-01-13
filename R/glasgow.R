@@ -49,7 +49,8 @@ plot_network <- function(graph, time, file_type) {
     device = if (file_type == "pdf") cairo_pdf else NULL,
     dpi = 600,
     width = 8,
-    height = 8 * 9 / 16
+    height = 8 * 9 / 16,
+    create.dir = TRUE
   )
 
   path
@@ -88,7 +89,8 @@ plot_measure <- function(graph, time, measure, file_type) {
     dpi = 600,
     device = if (file_type == "pdf") cairo_pdf else NULL,
     width = 8,
-    height = 8 * 9 / 16
+    height = 8 * 9 / 16,
+    create.dir = TRUE
   )
 
   path
@@ -123,7 +125,8 @@ plot_eigcv <- function(eigcv, time, laplacian) {
     plot = plot,
     dpi = 600,
     width = 8,
-    height = 8 * 9 / 16
+    height = 8 * 9 / 16,
+    create.dir = TRUE
   )
 
   path
@@ -234,7 +237,8 @@ plot_curve <- function(curve,
     plot = plot,
     dpi = 600,
     width = 8,
-    height = 8 * 9 / 16
+    height = 8 * 9 / 16,
+    create.dir = TRUE
   )
 
   path
@@ -296,7 +300,8 @@ plot_curve_manuscript <- function(graph, plot_file_type) {
     plot = plot_v,
     dpi = 600,
     width = 8,
-    height = 8 * 9 / 16
+    height = 8 * 9 / 16,
+    create.dir = TRUE
   )
 
   curve_u <- sensitivity_curve(
@@ -354,7 +359,8 @@ plot_curve_manuscript <- function(graph, plot_file_type) {
     plot = plot_u,
     dpi = 600,
     width = 8,
-    height = 8 * 9 / 16
+    height = 8 * 9 / 16,
+    create.dir = TRUE
   )
 
   c(path_u, path_v)
@@ -383,7 +389,8 @@ plot_tobacco_manuscript <- function(graph, plot_file_type) {
     plot = tobacco_plot,
     dpi = 600,
     width = 9,
-    height = 6
+    height = 6,
+    create.dir = TRUE
   )
 
   path
@@ -412,7 +419,8 @@ plot_sex_manuscript <- function(graph, plot_file_type) {
     plot = sex_plot,
     dpi = 600,
     width = 9,
-    height = 6
+    height = 6,
+    create.dir = TRUE
   )
 
   path
@@ -447,7 +455,8 @@ make_sex_positivity_plot <- function(clean, time_index) {
     plot = plot,
     dpi = 300,
     width = 10,
-    height = 10
+    height = 10,
+    create.dir = TRUE
   )
 
   path

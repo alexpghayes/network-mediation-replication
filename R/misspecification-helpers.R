@@ -90,7 +90,8 @@ plot_misspecification_loss <- function(losses, num_sims_per_paramset, file_type 
     plot = plot,
     width = 7.5,
     height = 8,
-    ...
+    ...,
+    create.dir = TRUE
   )
 
   plot2 <- summarized_losses |>
@@ -132,7 +133,8 @@ plot_misspecification_loss <- function(losses, num_sims_per_paramset, file_type 
     plot = plot2,
     width = 7.5,
     height = 8,
-    ...
+    ...,
+    create.dir = TRUE
   )
 
 
@@ -180,7 +182,8 @@ plot_misspecification_loss <- function(losses, num_sims_per_paramset, file_type 
     plot = plot3,
     width = 7.5,
     height = 8,
-    ...
+    ...,
+    create.dir = TRUE
   )
 
   plot4 <- losses |>
@@ -233,7 +236,8 @@ plot_misspecification_loss <- function(losses, num_sims_per_paramset, file_type 
     plot = plot4,
     width = 7.5,
     height = 8,
-    ...
+    ...,
+    create.dir = TRUE
   )
 
   c(path, path2, path3, path4)

@@ -18,7 +18,7 @@ make_hm_mediating_dag <- function() {
     x = c(1, 0, 2, 1),
     y = c(2, 1, 1, 0)
   )
-  
+
   #  example from the dagitty package
   dag <- dagify(
     Yi ~ Ti + Ci + Xi,
@@ -34,8 +34,8 @@ make_hm_mediating_dag <- function() {
     exposure = "Ti",
     outcome = "Yi"
   )
-  
-  
+
+
   dag |>
     tidy_dagitty() |>
     node_status() |>
@@ -48,7 +48,7 @@ make_hm_mediating_dag <- function() {
         y = y,
         xend = xend,
         yend = yend
-      ) 
+      )
     ) +
     geom_dag_label(aes(color = status, label = label), fill = "black", color = "white") +
     scale_color_manual(values = status_colors, guide = "none") +
@@ -61,16 +61,17 @@ make_hm_mediating_dag <- function() {
     ) +
     # geom_dag_text(aes(label = label), size = 5) +
     theme_dag(base_size = 22, base_family = "Fira Sans")
-  
+
   path <- here::here("figures", "dags", "mediating.png")
-  
+
   ggsave(
     path,
     height = 3.5,
     width = 3.5,
-    dpi = 500
+    dpi = 500,
+    create.dir = TRUE
   )
-  
+
   path
 }
 
@@ -119,7 +120,8 @@ make_mediation_dag <- function() {
     path,
     height = 3.5,
     width = 3.5,
-    dpi = 500
+    dpi = 500,
+    create.dir = TRUE
   )
 
   path
@@ -173,7 +175,8 @@ make_bipartite_mediation_figure <- function() {
     path,
     height = 3.5,
     width = 5,
-    dpi = 300
+    dpi = 300,
+    create.dir = TRUE
   )
 
   path
@@ -181,13 +184,13 @@ make_bipartite_mediation_figure <- function() {
 
 
 make_homophily_mediating_figure <- function() {
-  
+
   coords <- tibble(
     name = c("Ci", "Ti", "Xi", "Yi", "Aij", "Xj", "Cj", "Yj", "Tj"),
     x = c(1, 0, 2, 1, 3, 4, 5, 5, 6),
     y = c(2, 1, 1, 0, 0, 1, 2, 0, 1)
   )
-  
+
   #  example from the dagitty package
   dag <- dagify(
     Yi ~ Ti + Ci + Xi,
@@ -213,7 +216,7 @@ make_homophily_mediating_figure <- function() {
     exposure = "Ti",
     outcome = "Yi"
   )
-  
+
   dag |>
     tidy_dagitty() |>
     node_status() |>
@@ -228,27 +231,28 @@ make_homophily_mediating_figure <- function() {
     ) +
     geom_dag_text(aes(label = label), parse = TRUE, size = 5) +
     theme_dag(base_size = 22, base_family = "Computer Modern")
-  
+
   path <- here::here("figures", "dags", "homophily-mediating.png")
-  
+
   ggsave(
     path,
     height = 3.5,
     width = 3.5 * 16/9,
-    dpi = 500
+    dpi = 500,
+    create.dir = TRUE
   )
-  
+
   path
 }
 
 make_confounding_homophily_figure <- function() {
-  
+
   coords <- tibble(
     name = c("Ci", "Ti", "Xi", "Yi", "Aij", "Xj", "Cj", "Yj", "Tj"),
     x = c(1, 0, 2, 1, 3, 4, 5, 5, 6),
     y = c(2, 1, 1, 0, 0, 1, 2, 0, 1)
   )
-  
+
   #  example from the dagitty package
   dag <- dagify(
     Yi ~ Ti + Ci + Xi,
@@ -274,7 +278,7 @@ make_confounding_homophily_figure <- function() {
     exposure = "Ti",
     outcome = "Yi"
   )
-  
+
   dag |>
     tidy_dagitty() |>
     node_status() |>
@@ -289,27 +293,28 @@ make_confounding_homophily_figure <- function() {
     ) +
     geom_dag_text(aes(label = label), parse = TRUE, size = 5) +
     theme_dag(base_size = 22, base_family = "Computer Modern")
-  
+
   path <- here::here("figures", "dags", "confounding-homophily.png")
-  
+
   ggsave(
     path,
     height = 3.5,
     width = 3.5 * 16/9,
-    dpi = 500
+    dpi = 500,
+    create.dir = TRUE
   )
-  
+
   path
 }
 
 make_confounding_homophily_interference_figure <- function() {
-  
+
   coords <- tibble(
     name = c("Ci", "Ti", "Xi", "Yi", "Aij", "Xj", "Cj", "Yj", "Tj"),
     x = c(1, 0, 2, 1, 3, 4, 5, 5, 6),
     y = c(2, 1, 1, 0, 0, 1, 2, 0, 1)
   )
-  
+
   #  example from the dagitty package
   dag <- dagify(
     Yi ~ Tj + Aij + Ti + Ci + Xi,
@@ -335,7 +340,7 @@ make_confounding_homophily_interference_figure <- function() {
     exposure = "Ti",
     outcome = "Yi"
   )
-  
+
   dag |>
     tidy_dagitty() |>
     node_status() |>
@@ -350,15 +355,16 @@ make_confounding_homophily_interference_figure <- function() {
     ) +
     geom_dag_text(aes(label = label), parse = TRUE, size = 5) +
     theme_dag(base_size = 22, base_family = "Computer Modern")
-  
+
   path <- here::here("figures", "dags", "confounding-homophily-interference.png")
-  
+
   ggsave(
     path,
     height = 3.5,
     width = 3.5 * 16/9,
-    dpi = 500
+    dpi = 500,
+    create.dir = TRUE
   )
-  
+
   path
 }

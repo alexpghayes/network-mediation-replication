@@ -77,7 +77,7 @@ create_intervention_plots <- function() {
       y = "Node",
       x = "Block"
     )
-  
+
   latent_plot
 
   path6 <- here("figures", "canonical-intervention", "latent-space.png")
@@ -87,7 +87,8 @@ create_intervention_plots <- function() {
     plot = latent_plot,
     width = 5,
     height = 2.75,
-    dpi = 800
+    dpi = 800,
+    create.dir = TRUE
   )
 
   pre <- undirected_factor_model(
@@ -111,7 +112,8 @@ create_intervention_plots <- function() {
 
   ggsave(
     filename = path1,
-    plot = plot1
+    plot = plot1,
+    create.dir = TRUE
   )
 
   plot2 <- plot_expectation(post) +
@@ -124,7 +126,8 @@ create_intervention_plots <- function() {
 
   ggsave(
     filename = path2,
-    plot = plot2
+    plot = plot2,
+    create.dir = TRUE
   )
 
   A <- sample_sparse(pre)
@@ -137,7 +140,8 @@ create_intervention_plots <- function() {
     plot = plot_sparse_matrix(A_post) +
       theme(
         legend.position = "none"
-      )
+      ),
+    create.dir = TRUE
   )
 
   path5 <- here("figures", "canonical-intervention", "a-untreated.pdf")
@@ -147,7 +151,8 @@ create_intervention_plots <- function() {
     plot = plot_sparse_matrix(A) +
       theme(
         legend.position = "none"
-      )
+      ),
+    create.dir = TRUE
   )
 
   diff <- as.matrix(expectation(post) - expectation(pre))
@@ -163,7 +168,8 @@ create_intervention_plots <- function() {
 
   ggsave(
     path3,
-    plot3
+    plot3,
+    create.dir = TRUE
   )
 
   c(path1, path2, path3, path4, path5, path6)

@@ -57,7 +57,8 @@ make_mediating_figure <- function() {
     path,
     height = 3.5,
     width = 3.5 * 16/9,
-    dpi = 500
+    dpi = 500,
+    create.dir = TRUE
   )
 
   path
@@ -106,7 +107,8 @@ make_confounding_figure <- function() {
     path,
     height = 3.5,
     width = 3.5 * 16/9,
-    dpi = 500
+    dpi = 500,
+    create.dir = TRUE
   )
 
   path
@@ -160,7 +162,8 @@ make_full_mediating_figure <- function() {
     path,
     height = 3.5,
     width = 3.5 * 16/9,
-    dpi = 500
+    dpi = 500,
+    create.dir = TRUE
   )
 
   path
@@ -214,7 +217,8 @@ make_full_confounding_figure <- function() {
     path,
     height = 3.5,
     width = 3.5 * 16/9,
-    dpi = 500
+    dpi = 500,
+    create.dir = TRUE
   )
 
   path
@@ -268,7 +272,8 @@ make_interference_figure <- function() {
     path,
     height = 3.5,
     width = 3.5 * 16/9,
-    dpi = 500
+    dpi = 500,
+    create.dir = TRUE
   )
 
   path
@@ -323,7 +328,8 @@ make_contagion_figure <- function() {
     path,
     height = 3.5,
     width = 3.5 * 16/9,
-    dpi = 500
+    dpi = 500,
+    create.dir = TRUE
   )
 
   path

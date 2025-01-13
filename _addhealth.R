@@ -1,14 +1,16 @@
 library(targets)
 library(here)
+library(crew)
 
-data(addhealth, package = "netmediate")
+data(addhealth, package = "latentnetmediate")
 
 tar_option_set(
+  controller = crew_controller_local(workers = 4),
   packages = c(
     "glue",
     "broom",
     "tidygraph",
-    "netmediate",
+    "latentnetmediate",
     "here",
     "ggplot2",
     "dplyr",
@@ -16,10 +18,8 @@ tar_option_set(
     "stringr",
     "ggraph"
   ),
-  imports = c("netmediate", "fastRG") # changes to these packages will invalidate pipeline
+  imports = c("latentnetmediate", "fastRG") # changes to these packages will invalidate pipeline
 )
-
-options(clustermq.scheduler = "multiprocess")
 
 ##### AddHealth overcontrol bias example ---------------------------------------
 
@@ -100,7 +100,8 @@ plot_rank_curve <- function(rank_curve, file_type, ...) {
   ggsave(path,
     dpi = 600,
     width = 8,
-    height = 8 * 9 / 16
+    height = 8 * 9 / 16,
+    create.dir = TRUE
   )
 
   path

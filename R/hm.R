@@ -5,7 +5,7 @@ clean_cahmped_data <- function(raw_path) {
       id,
       group, # treatment assignment
       # contains("timestamp"),
-      redcap_event_name,
+      time,
       contains("nih_lonliness_q0"), # mediator indicators
       contains("mlq_10_q"), # mediator indicators
       contains("ffmq_8"), # 8 item-level mediators,
@@ -24,13 +24,13 @@ clean_cahmped_data <- function(raw_path) {
       depression = promis_bank_v10_depression_tscore,
       anxiety = promis_bank_v10_anxiety_tscore,
       event_name = case_match(
-        redcap_event_name,
-        "pre_arm_1" ~ "Week 0",
-        "w1_arm_1" ~ "Week 1",
-        "w2_arm_1" ~ "Week 2",
-        "w3_arm_1" ~ "Week 3",
-        "post_arm_1" ~ "Week 4",
-        "3mo_arm_1" ~ "Week 16"
+        time,
+        "baseline" ~ "Week 0",
+        "week_1" ~ "Week 1",
+        "week_2" ~ "Week 2",
+        "week_3" ~ "Week 3",
+        "week_4_post" ~ "Week 4",
+        "week_28" ~ "Week 16"
       ),
       event_name_fct = fct_inorder(event_name),
       age = pre_age,
@@ -108,7 +108,8 @@ make_ate_figure <- function(data) {
     plot = plot,
     height = 2.75,
     width = 5.75,
-    dpi = 300
+    dpi = 300,
+    create.dir = TRUE
   )
 
   path
@@ -153,7 +154,8 @@ make_week4_scatter_figure <- function(data) {
     plot = plot,
     height = 2.5,
     width = 2.25,
-    dpi = 300
+    dpi = 300,
+    create.dir = TRUE
   )
 
   path
@@ -206,7 +208,8 @@ make_week4_responses_figure <- function(A) {
     plot = plot,
     height = 2.75,
     width = 5.75,
-    dpi = 600
+    dpi = 600,
+    create.dir = TRUE
   )
 
   path
@@ -238,7 +241,8 @@ make_xhat_figure <- function(fa) {
     plot = plot,
     height = 3.5,
     width = 4 * 16 / 9,
-    dpi = 300
+    dpi = 300,
+    create.dir = TRUE
   )
 
   path
@@ -272,11 +276,11 @@ make_yhat_figure <- function(fa) {
       ),
       hint = case_match(
         name,
-        "Lhat1" ~ "Purposeful",
-        "Lhat2" ~ "Purposeless",
-        "Lhat3" ~ "Distraction",
-        "Lhat4" ~ "Defusion",
-        "Lhat5" ~ "Loneliness"
+        "Lhat4" ~ "Purposeful",
+        "Lhat3" ~ "Purposeless",
+        "Lhat5" ~ "Distraction",
+        "Lhat1" ~ "Defusion",
+        "Lhat2" ~ "Loneliness"
       ),
       name_hinted = glue("atop({symbol}, {hint})")
     ) |>
@@ -303,7 +307,8 @@ make_yhat_figure <- function(fa) {
     plot = plot,
     height = 4.5,
     width = 5.5,
-    dpi = 600
+    dpi = 600,
+    create.dir = TRUE
   )
 
   path
@@ -338,7 +343,8 @@ make_vhat_figure <- function(fa) {
     plot = plot,
     height = 2.9,
     width = 5.35,
-    dpi = 300
+    dpi = 300,
+    create.dir = TRUE
   )
 
   path
@@ -357,7 +363,8 @@ make_eigcv_plots <- function(ecv, event) {
     plot = plot,
     height = 3.5,
     width = 3.5,
-    dpi = 500
+    dpi = 500,
+    create.dir = TRUE
   )
 
   path
@@ -415,7 +422,8 @@ make_rank_estimate_figures <- function(A, ecv) {
     plot = plot,
     height = 2.75,
     width = 5.25,
-    dpi = 400
+    dpi = 400,
+    create.dir = TRUE
   )
 
   path
@@ -491,11 +499,11 @@ make_regression_figures <- function(nested_by_event) {
       ),
       hint = case_match(
         term,
-        "Xhat1" ~ "Purposeful",
-        "Xhat2" ~ "Purposeless",
-        "Xhat3" ~ "Distraction",
-        "Xhat4" ~ "Defusion",
-        "Xhat5" ~ "Loneliness",
+        "Xhat4" ~ "Purposeful",
+        "Xhat3" ~ "Purposeless",
+        "Xhat5" ~ "Distraction",
+        "Xhat1" ~ "Defusion",
+        "Xhat2" ~ "Loneliness",
         "Meditation" ~ "Meditation"
       ),
       term_hinted = glue("{symbol} ~~ {hint}")
@@ -546,7 +554,8 @@ make_regression_figures <- function(nested_by_event) {
     plot = plot,
     height = 3,
     width = 5.75,
-    dpi = 300
+    dpi = 300,
+    create.dir = TRUE
   )
 
   path
@@ -622,11 +631,11 @@ make_regression_figures_depression <- function(nested_by_event) {
       ),
       hint = case_match(
         term,
-        "Xhat1" ~ "Purposeful",
-        "Xhat2" ~ "Purposeless",
-        "Xhat3" ~ "Distraction",
-        "Xhat4" ~ "Defusion",
-        "Xhat5" ~ "Loneliness",
+        "Xhat4" ~ "Purposeful",
+        "Xhat3" ~ "Purposeless",
+        "Xhat5" ~ "Distraction",
+        "Xhat1" ~ "Defusion",
+        "Xhat2" ~ "Loneliness",
         "Meditation" ~ "Meditation"
       ),
       term_hinted = glue("{symbol} ~~ {hint}")
@@ -677,7 +686,8 @@ make_regression_figures_depression <- function(nested_by_event) {
     plot = plot,
     height = 3,
     width = 5.75,
-    dpi = 300
+    dpi = 300,
+    create.dir = TRUE
   )
 
   path
@@ -724,7 +734,8 @@ make_sensitivity_figure <- function(curve) {
     plot = plot,
     height = 2.25,
     width = 5,
-    dpi = 300
+    dpi = 300,
+    create.dir = TRUE
   )
 
   path
@@ -777,7 +788,8 @@ make_mediation_trajectory_figure <- function(nested_by_event) {
     plot = plot,
     height = 2.75,
     width = 5.25,
-    dpi = 300
+    dpi = 300,
+    create.dir = TRUE
   )
 
   path
@@ -831,7 +843,8 @@ make_mediation_trajectory_figure_depression <- function(nested_by_event) {
     plot = plot,
     height = 2.75,
     width = 5.25,
-    dpi = 300
+    dpi = 300,
+    create.dir = TRUE
   )
 
   path
@@ -872,7 +885,8 @@ make_latent_positivity_plot <- function(nested_by_event) {
     plot = plot,
     dpi = 300,
     width = 10,
-    height = 10
+    height = 10,
+    create.dir = TRUE
   )
 
   path

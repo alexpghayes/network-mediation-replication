@@ -70,7 +70,7 @@ list(
   ),
 
   tar_target(chunk_size, 10),
-  tar_target(num_chunks, 10),
+  tar_target(num_chunks, 1), # SET TO 10 TO REPLICATE PAPER
 
   tar_target(n, c(500, 1000)),
   tar_target(rank, c(5, 10, 15)),
